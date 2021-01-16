@@ -17,8 +17,6 @@ export function Player() {
     const nickname = e.currentTarget.value;
     setIsNicknameTouched(true);
 
-    console.log(nickname);
-
     if (nickname.length < 3) {
       setIsNicknameValid(false);
       setNicknameErrorMessage("Nickname is too short.");
@@ -43,8 +41,6 @@ export function Player() {
     }
 
     const { nickname } = e.currentTarget.elements;
-
-    console.log(nickname.value);
 
     dispatch(setNickname(nickname.value));
 
