@@ -5,15 +5,19 @@ import { MemoryRouter } from "react-router-dom";
 
 import store from "../app/store";
 import App from "../App";
+import { APPLICATION_ROUTES, GAME_INDEX } from "./config";
 
-test("should mount app correctly", () => {
+test("should render /game route correctly", () => {
   const { getByText } = render(
     <Provider store={store}>
-      <MemoryRouter>
+      <MemoryRouter
+        initialEntries={APPLICATION_ROUTES}
+        initialIndex={GAME_INDEX}
+      >
         <App />
       </MemoryRouter>
     </Provider>
   );
 
-  expect(getByText(/mini-memory game/i)).toBeInTheDocument();
+  expect(getByText(/player/i)).toBeInTheDocument();
 });
