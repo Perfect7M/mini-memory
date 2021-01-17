@@ -22,9 +22,9 @@ export default function Leaderboards() {
         </thead>
         <tbody>
           {results.length > 0 ? (
-            results.map((player) => {
+            results.map((player, i) => {
               return (
-                <tr className={styles.row}>
+                <tr key={`${player.nickname}_${i}`} className={styles.row}>
                   <td className={styles.item}>{player.nickname}</td>
                   <td className={styles.item}>{player.points}</td>
                 </tr>
