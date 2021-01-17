@@ -4,14 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useImmer } from "use-immer";
 
-import { addPoints } from "../../features/player/playerSlice";
+import {
+  addPoints,
+  clearPoints,
+  selectNickname,
+  selectPoints,
+} from "../../features/player/playerSlice";
+import { savePlayer } from "../../features/results/resultsSlice";
 import {
   selectIsInitialFlipped,
   setIsInitialFlipped,
   setBoard,
   selectBoard,
   selectIsBoardEmpty,
-} from "../../features/board/boardSlice";
+} from "./boardSlice";
 import { generateCards, DEFAULT_CONFIG } from "./Board.utils";
 import Cards from "../../components/cards/Cards";
 
@@ -19,6 +25,8 @@ export default function Board({ size, config = DEFAULT_CONFIG }) {
   const board = useSelector(selectBoard);
   const isInitialFlipped = useSelector(selectIsInitialFlipped);
   const isBoardEmpty = useSelector(selectIsBoardEmpty);
+  const nickname = useSelector(selectNickname);
+  const points = useSelector(selectPoints);
   const dispatch = useDispatch();
   const history = useHistory();
   const [cards, setCards] = useImmer(() =>
@@ -101,13 +109,19 @@ export default function Board({ size, config = DEFAULT_CONFIG }) {
   ]);
 
   useEffect(() => {
-    if (isBoardEmpty) {
-      // TODO save results and clean points
+    if (isBoardEmpty && points > 0) {
+      dispatch(savePlayer({ nickname, points }));
+      dispatch(clearPoints());
+      dispatch(setBoard(cards));
+      dispatch(setIsInitialFlipped(true));
+
       history.push("/leaderboards");
+
+      return;
     }
 
     dispatch(setBoard(cards));
-  }, [cards, dispatch, history, isBoardEmpty]);
+  }, [cards, dispatch, history, isBoardEmpty, points, nickname]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

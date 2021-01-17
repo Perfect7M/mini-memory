@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.head {
+  text-align: left;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.head:last-of-type {
+  text-align: right;
+}
+
+.row {
+  display: table-row;
+}
+
+.item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.item:last-of-type {
+  text-align: right;
+}
+
+.empty {
+  display: block;
+  padding: 10px 0;
+}
