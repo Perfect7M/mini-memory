@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const joinSlice = createSlice({
+export const playerSlice = createSlice({
   name: "player",
   initialState: {
     nickname: "",
     points: 0,
-    board: [],
   },
   reducers: {
     addPoints: (state, action) => {
@@ -14,16 +13,12 @@ export const joinSlice = createSlice({
     setNickname: (state, action) => {
       state.nickname = action.payload;
     },
-    setBoard: (state, action) => {
-      state.board = action.payload;
-    },
   },
 });
 
-export const { addPoints, setNickname, setBoard } = joinSlice.actions;
+export const { addPoints, setNickname, setBoard } = playerSlice.actions;
 
 export const selectNickname = (state) => state.player.nickname;
 export const selectPoints = (state) => state.player.points;
-export const selectBoard = (state) => state.player.board;
 
-export default joinSlice.reducer;
+export default playerSlice.reducer;

@@ -13,6 +13,7 @@ import { combineReducers } from "redux";
 
 import counterReducer from "../features/counter/counterSlice";
 import playerReducer from "../features/player/playerSlice";
+import boardReducer from '../features/board/boardSlice';
 
 export default configureStore({
   reducer: persistReducer(
@@ -23,6 +24,7 @@ export default configureStore({
     combineReducers({
       counter: counterReducer,
       player: playerReducer,
+      board: boardReducer,
     })
   ),
   middleware: getDefaultMiddleware({

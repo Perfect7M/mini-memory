@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Board from "../../components/board/Board";
+import Board from "../../features/board/Board";
 
 import {
   selectNickname,
@@ -15,11 +15,11 @@ export default function Game() {
 
   return (
     <div className={styles.row}>
-      <h1>
-        Player: {nickname} {points}
+      <h1 className={styles.heading}>
+        <span>Player: {nickname}</span> <span>{points}</span>
       </h1>
 
-      <Board size={4} />
+      <Board size={8} />
     </div>
   );
 }

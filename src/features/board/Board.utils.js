@@ -35,6 +35,8 @@ export const AVAILABLE_CARDS = [
 export const DEFAULT_CONFIG = {
   wrongAnswerPoints: -100,
   correctAnswerPoints: 200,
+  initialDelayBeforeFlip: 2000,
+  wrongAnswerFlipDelay: 1000,
 };
 
 // credits: https://stackoverflow.com/a/6274381

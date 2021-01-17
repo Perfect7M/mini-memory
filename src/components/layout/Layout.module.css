@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("./background.jpg");
+  background-size: cover;
+  padding: 15px;
+  overflow: auto;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  border-top: 7px solid var(--color2);
+}
+
+.attribution {
+  margin-top: 15px;
+  color: #fff;
+  text-shadow: 1px 1px #000;
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    padding: 35px;
+  }
+}

@@ -49,7 +49,9 @@ export function Player() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label htmlFor="nickname-input">Nickname</label>
+      <label className={styles.label} htmlFor="nickname-input">
+        Nickname
+      </label>
       <input
         className={styles.input}
         name="nickname"
@@ -57,7 +59,9 @@ export function Player() {
         onChange={validateNickname}
         defaultValue={cachedNickname}
       />
-      <div>{isNicknameTouched && nicknameErrorMessage}</div>
+      <div className={styles.error}>
+        {isNicknameTouched && nicknameErrorMessage}
+      </div>
       <button className={styles.button} type="submit">
         Start game
       </button>
